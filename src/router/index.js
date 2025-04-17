@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutUS from '../views/AboutUs.vue'
-import ProyectoView from '@/views/ProyectoView.vue'
+import OfertasView from '@/views/OfertasView.vue'
 
 const routes = [
   {
@@ -10,28 +9,28 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/sobre-nosotros',
-    name: 'nosotros',
-    component: AboutUS
-  },
-  {
-    path: '/proyecto',
-    name: 'proyecto',
-    component: ProyectoView
+    path: '/ofertas',
+    name: 'ofertas',
+    component: OfertasView
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Asegura que siempre el scroll se posicione al inicio de la página
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0, left: 0 };
+    }
+  }
 })
 
 export default router

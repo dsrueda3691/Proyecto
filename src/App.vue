@@ -3,24 +3,77 @@
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@keyframes fadeinup {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fadeinup {
+  animation: fadeinup 0.8s ease;
+  
+}
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fadeinbottom {
+  animation: fadeInBottom 0.8s ease forwards;
+  
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-nav {
-  padding: 30px;
+.fadeinleft {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.fadeinright {
+  animation: fadeInRight 0.8s ease forwards;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8); 
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); 
+  }
 }
+
+.zoomin {
+  animation: zoomIn 0.8s ease forwards;
+}
+
 </style>

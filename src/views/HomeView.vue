@@ -1,21 +1,50 @@
 <template>
-  <div>
-    <h1>Página Principal</h1>
-    <p>
-      <router-link to="/sobre-nosotros">Ir a la página sobre-nosotros</router-link>
-    </p>
-    <p>
-      <router-link to="/proyecto">Ir a la página Del Proyecto</router-link>
-    </p>
+
+
+  
+  <div class="body">
+    <HeaderProyecto></HeaderProyecto>
+    
+    <HomeVideo></HomeVideo>
+    <GameDestacado></GameDestacado>
+    <GameHome></GameHome>
+    
+    <NewsHome></NewsHome>
+    <FooterProyecto ></FooterProyecto>
   </div>
 </template>
 
 <script>
+import FooterProyecto from "@/components/Componentes+/FooterProyecto.vue";
+import HeaderProyecto from "@/components/Componentes+/HeaderProyecto.vue";
+import GameHome from "@/components/PaginaInicio/GameHome.vue";
+import NewsHome from "@/components/PaginaInicio/NewsHome.vue";
+import HomeVideo from "@/components/PaginaInicio/HomeVideo.vue";
+import GameDestacado from "@/components/PaginaInicio/GameDestacado.vue";
 export default {
-  name: 'HomeView'
+  name: "HomeView",
+  components: {
+    FooterProyecto,
+    HeaderProyecto,
+    GameHome,
+    NewsHome,
+    HomeVideo,
+    GameDestacado,
+  },
 };
 </script>
+<style scoped>
+.body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
+  color: #333333;
 
-<style>
+}
+
+
+
+
+
+
 
 </style>
