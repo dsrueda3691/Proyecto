@@ -21,6 +21,9 @@ import GameHome from "@/components/PaginaInicio/GameHome.vue";
 import NewsHome from "@/components/PaginaInicio/NewsHome.vue";
 import HomeVideo from "@/components/PaginaInicio/HomeVideo.vue";
 import GameDestacado from "@/components/PaginaInicio/GameDestacado.vue";
+
+
+
 export default {
   name: "HomeView",
   components: {
@@ -30,13 +33,14 @@ export default {
     NewsHome,
     HomeVideo,
     GameDestacado,
+    
   },
 };
 </script>
 <style scoped>
 .body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f0f0f0;
+  background-color: #b7b4b4;
   color: #333333;
 
 }

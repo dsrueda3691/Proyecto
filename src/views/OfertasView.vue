@@ -1,30 +1,40 @@
 <template>
   <div class="Body">
-    <HeaderComponents />
-    <main>
-      <HomeOfertas />
+    <HeaderProyecto />
+  
+ 
+      <OfertaMain />
+      <DescuentoOfertas />
       <OfertasGrid />
       <Oferta />
-    </main>
+      
+ 
     <FooterProyecto />
   </div>
 </template>
 
 <script>
 import FooterProyecto from "@/components/Componentes+/FooterProyecto.vue";
-import HeaderComponents from "@/components/Componentes+/HeaderComponents.vue";
-import HomeOfertas from "@/components/PaginaOfertas/HomeOfertas.vue";
+import HeaderProyecto from "@/components/Componentes+/HeaderProyecto.vue";
+
+import DescuentoOfertas from "@/components/PaginaOfertas/DescuentoOfertas.vue";
+
 import Oferta from "@/components/PaginaOfertas/Oferta.vue";
+import OfertaMain from "@/components/PaginaOfertas/OfertaMain.vue";
 import OfertasGrid from "@/components/PaginaOfertas/OfertasGrid.vue";
+
 
 export default {
   name: "ProyectoView",
   components: {
-    HeaderComponents,
+    HeaderProyecto,
+    
     FooterProyecto,
-    HomeOfertas,
+
     OfertasGrid,
     Oferta,
+    DescuentoOfertas,
+    OfertaMain,
   },
 };
 </script>
@@ -37,11 +47,7 @@ export default {
   max-width: 100%; 
 }
 
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-}
+
 
 @media (max-width: 768px) {
   main {

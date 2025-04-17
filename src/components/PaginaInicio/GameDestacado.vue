@@ -1,39 +1,39 @@
 <template>
-    <div>
-        <h2 v-animate-vue="{ enterClass: 'fadeinright' }">Novedad</h2>
+  <div>
+    <h2 v-animate-vue="{ enterClass: 'fadeinright' }">Novedad</h2>
+  
+    <div class="oferta-destacada" v-animate-vue="{ enterClass: 'fadeinup' }">
     
-  <div class="oferta-destacada" v-animate-vue="{ enterClass: 'fadeinup' }">
-    
-    <div class="oferta-info " v-animate-vue="{ enterClass: 'fadeinleft' }">
-      <h3>Grand Theft Auto VI</h3>
-      <p class="descripcion">Incluye el juego base y todas las expansiones</p>
-      <p class="precio-original">Precio original: $129.99</p>
-      <p class="precio-oferta">Precio oferta: $109.99</p>
+      <div class="oferta-info " v-animate-vue="{ enterClass: 'fadeinleft' }">
+        <h3>Grand Theft Auto VI</h3>
+        <p class="descripcion">Incluye el juego base y todas las expansiones</p>
+        <p class="precio-original">Precio original: $129.99</p>
+        <p class="precio-oferta">Precio oferta: $109.99</p>
 
-      <div class="game-actions">
-        <button class="action-btn comprar">Detalles</button>
-        <button class="action-btn">Compra y Envío</button>
-        <button class="action-btn">Regalar</button>
+        <div class="game-actions">
+          <button class="action-btn comprar">Detalles</button>
+          <button class="action-btn">Compra y Envío</button>
+          <button class="action-btn">Regalar</button>
+        </div>
       </div>
-    </div>
 
-    <div class="imagen-oferta">
-      <img
-        class="fondo"
-        :src="require('@/assets/miami.jpg')"
-        alt="Fondo Miami"
-      />
-      <img class="juego" :src="require('@/assets/gta6.jpg')" alt="GTA 6" v-animate-vue="{ enterClass: 'fadeinup' }" />
+      <div class="imagen-oferta">
+        <img
+          class="fondo"
+          :src="require('@/assets/miami.jpg')"
+          alt="Fondo Miami"
+        />
+        <img class="juego" :src="require('@/assets/gta6.jpg')" alt="GTA 6" v-animate-vue="{ enterClass: 'fadeinup' }" />
 
-      <div class="plataformas " v-animate-vue="{ enterClass: 'fadeinup' }">
-        <img :src="require('@/assets/ps5.png')" alt="PS5" />
-        <img src="@/assets/xbox.png" alt="Xbox" />
-        <img src="@/assets/nintendo.png" alt="Nintendo" />
-        <img src="@/assets/steam.png" alt="Steam" />
+        <div class="plataformas " v-animate-vue="{ enterClass: 'fadeinup' }">
+          <img :src="require('@/assets/ps5.png')" alt="PS5" />
+          <img src="@/assets/xbox.png" alt="Xbox" />
+          <img src="@/assets/nintendo.png" alt="Nintendo" />
+          <img src="@/assets/steam.png" alt="Steam" />
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -43,32 +43,39 @@ export default {
 </script>
 
 <style scoped>
-h2{
-position: relative;
-top: 2rem;
-text-align: end;
-
-font-size: 3.5rem;
-color: #4b0082; 
-margin: 4rem 4rem 3rem 0;
-
-
+h2 {
+  position: relative;
+  top: 2rem;
+  text-align: end;
+  font-size: 3.5rem;
+  color: #00ffff; /* Cyan brillante */
+  margin: 4rem 4rem 3rem 0;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif; /* Tipografía futurista */
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; /* Sombra de texto neón */
+  transition: text-shadow 0.3s ease;
 }
+
+h2:hover {
+  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff; /* Efecto de resplandor al pasar */
+}
+
 .oferta-destacada {
   font-family: "Arial", sans-serif;
   width: 90%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f8f8f8;
-  color: #333;
+  background-color: #222; /* Fondo oscuro */
+  color: #f0f0f0; /* Texto en blanco para contraste */
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
   height: 400px;
+  margin-bottom: 7rem;
 }
 
 .oferta-info {
@@ -80,12 +87,13 @@ h3 {
   font-size: 2.4rem;
   font-weight: 600;
   margin: 0 0 1rem;
-  color: #4b0082;
+  color: #00ffff; /* Cyan brillante */
+  text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff; /* Sombra de texto neón */
 }
 
 .descripcion {
   font-size: 1rem;
-  color: #666;
+  color: #ccc; /* Gris claro */
   margin-bottom: 1rem;
 }
 
@@ -111,8 +119,8 @@ h3 {
 .action-btn {
   padding: 0.8rem 1.5rem;
   background-color: transparent;
-  border: 2px solid #1c69d4;
-  color: #1c69d4;
+  border: 2px solid #00ffff; /* Borde neón */
+  color: #00ffff; /* Texto neón */
   font-weight: 600;
   border-radius: 4px;
   cursor: pointer;
@@ -122,11 +130,13 @@ h3 {
 
 .action-btn:hover {
   transform: scale(1.05);
+  background-color: #00ffff; /* Fondo de hover */
+  color: #311545; /* Texto oscuro en hover */
 }
 
 .comprar {
-  background-color: #1c69d4;
-  color: white;
+  background-color: #00ffff; /* Fondo cyan */
+  color: #311545;
   border: none;
 }
 
@@ -171,13 +181,12 @@ h3 {
   height: 100%;
   background: linear-gradient(
     to right,
-    rgba(248, 248, 248, 1) 5%,
-    rgba(248, 248, 248, 0) 70%
+    rgba(34, 34, 34, 1) 5%, /* Fondo oscuro */
+    rgba(34, 34, 34, 0) 70%
   );
   z-index: 1;
   pointer-events: none;
 }
-
 
 .plataformas {
   position: absolute;
@@ -203,7 +212,6 @@ h3 {
   transform: scale(1.15);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-
 
 @media (max-width: 768px) {
   .oferta-destacada {
@@ -238,6 +246,7 @@ h3 {
     right: 0;
   }
 }
+
 @media (max-width: 480px) {
   h2 {
     font-size: 2rem;
@@ -272,5 +281,4 @@ h3 {
     padding: 4px;
   }
 }
-
 </style>

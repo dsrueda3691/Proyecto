@@ -3,6 +3,7 @@
 </template>
 
 <style>
+
 @keyframes fadeinup {
   from {
     opacity: 0;
@@ -14,7 +15,7 @@
   }
 }
 .fadeinup {
-  animation: fadeinup 0.8s ease;
+  animation: fadeinup 0.5s ease;
   
 }
 @keyframes fadeInBottom {
@@ -28,7 +29,7 @@
   }
 }
 .fadeinbottom {
-  animation: fadeInBottom 0.8s ease forwards;
+  animation: fadeInBottom 0.5s ease forwards;
   
 }
 @keyframes fadeInLeft {
@@ -43,7 +44,7 @@
 }
 
 .fadeinleft {
-  animation: fadeInLeft 0.8s ease forwards;
+  animation: fadeInLeft 0.5s ease forwards;
 }
 @keyframes fadeInRight {
   from {
@@ -57,7 +58,7 @@
 }
 
 .fadeinright {
-  animation: fadeInRight 0.8s ease forwards;
+  animation: fadeInRight 0.5s ease forwards;
 }
 
 
@@ -73,7 +74,7 @@
 }
 
 .zoomin {
-  animation: zoomIn 0.8s ease forwards;
+  animation: zoomIn 0.5s ease forwards;
 }
 
 </style>

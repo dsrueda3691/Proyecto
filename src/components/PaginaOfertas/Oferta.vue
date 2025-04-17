@@ -1,16 +1,14 @@
 <template>
-  <div>
+  <div class="oferta-container">
     <h2 v-animate-vue="{ enterClass: 'fadeinleft' }">Oferta del Día</h2>
     <div class="oferta-del-dia" v-animate-vue="{ enterClass: 'zoomin' }">
       <div class="oferta-destacada">
         <img :src="require('@/assets/V-V2-en.jpg')" alt="Oferta del Día" />
         <div class="oferta-info">
           <h3>Cyberpunk 2077: Edición Definitiva</h3>
-          <p class="descripcion">
-            Incluye el juego base y todas las expansiones
-          </p>
-          <p class="precio-original">Precio original: $89.99</p>
-          <p class="precio-oferta">Precio oferta: $59.99</p>
+          <p class="descripcion">Incluye el juego base y todas las expansiones.</p>
+          <p class="precio-original">Antes: $89.99</p>
+          <p class="precio-oferta">Ahora: $59.99</p>
           <p class="tiempo-restante">
             Tiempo restante: <span id="countdown">12:00:00</span>
           </p>
@@ -20,6 +18,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "OfertaDelDia",
@@ -27,50 +26,90 @@ export default {
 </script>
 
 <style scoped>
+.oferta-container {
+  background-color: #333;
+  padding: 4rem 2rem;
+  border-top: 6px solid #d4af37;
+}
+
+h2 {
+  font-size: 2.8rem;
+  color: #d4af37;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.oferta-del-dia {
+  display: flex;
+  justify-content: center;
+}
 
 .oferta-destacada {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  background-color: #fff;
+  gap: 3rem;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  background-color: #444;
+  border: 2px solid #d4af37;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 1100px;
 }
 
 .oferta-destacada img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   object-fit: cover;
+}
+
+.oferta-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
 }
 
 .precio-original {
   text-decoration: line-through;
-  color: #808080;
+  color: #bbb;
 }
 
 .precio-oferta {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #8a2be2;
+  color: #d4af37;
+  margin-bottom: 1rem;
 }
 
 button {
-  background-color: #8a2be2;
-  color: white;
+  background-color: #d4af37;
+  color: #000;
   border: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 5px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background-color: #4b0082;
+  background-color: #c5a11b;
 }
-h2 {
-  align-self: start;
-  font-size: 3.5rem;
-  color: #4b0082;
-  margin: 4rem 2rem 2rem 4rem;
+
+@media (max-width: 768px) {
+  .oferta-destacada {
+    grid-template-columns: 1fr;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  button {
+    width: 100%;
+  }
 }
 </style>

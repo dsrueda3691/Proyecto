@@ -3,31 +3,38 @@
     <h2 v-animate-vue="{ enterClass: 'zoomin' }">Últimas Noticias</h2>
     <div class="news-grid">
       <article v-animate-vue="{ enterClass: 'fadeinup' }">
-        <h3>E3 2024: Lo que esperamos ver</h3>
-        <p>La feria de videojuegos más importante del año se acerca. Descubre
-            nuestras predicciones y los anuncios más esperados.</p>
+        <h3> Remake de <strong>Metal Gear Solid</strong>  anunciado</h3>
+        <p>Konami confirma el esperado remake del clásico, con gráficos renovados y mejoras en jugabilidad.</p>
         <a href="#">Leer más</a>
       </article>
 
       <article v-animate-vue="{ enterClass: 'fadeinup' }">
-        <h3>Top 10 juegos más esperados</h3>
-        <p> Repasamos los títulos que prometen revolucionar la industria en
-            los próximos meses. ¿Cuál es tu favorito?</p>
+        <h3><strong>The Legend of Zelda: Echoes of Time</strong> revelado</h3>
+        <p>Nintendo presenta una nueva entrega de Zelda con un enfoque en viajes temporales y mundo abierto expandido.</p>
         <a href="#">Leer más</a>
       </article>
 
       <article v-animate-vue="{ enterClass: 'fadeinup' }">
-        <h3>El futuro de los eSports</h3>
-        <p>
-            Analizamos las tendencias y el crecimiento de los deportes
-            electrónicos. ¿Serán olímpicos en 2028?
-        </p>
+        <h3><strong>SteamDeck 2:</strong> llega en 2025</h3>
+        <p>Valve anuncia la nueva generación de su consola portátil, con más potencia y una pantalla OLED.</p>
         <a href="#">Leer más</a>
       </article>
 
       <article v-animate-vue="{ enterClass: 'fadeinup' }">
-        <h3>Otra noticia destacada</h3>
-        <p>Contenido interesante...</p>
+        <h3><strong>GTA VI:</strong>  muestra gameplay extendido</h3>
+        <p>Rockstar libera un nuevo avance de 10 minutos mostrando el mapa, vehículos y nuevas mecánicas.</p>
+        <a href="#">Leer más</a>
+      </article>
+
+      <article v-animate-vue="{ enterClass: 'fadeinup' }">
+        <h3>Xbox y Bethesda: fusión creativa total</h3>
+        <p>El futuro de franquicias como <strong>DOOM</strong>  y *Starfield* se redefine tras una reestructuración interna.</p>
+        <a href="#">Leer más</a>
+      </article>
+
+      <article v-animate-vue="{ enterClass: 'fadeinup' }">
+        <h3>Realidad Virtual: ¿el nuevo estándar?</h3>
+        <p>Con nuevos dispositivos en camino, los estudios apuestan fuerte por experiencias inmersivas.</p>
         <a href="#">Leer más</a>
       </article>
     </div>
@@ -40,13 +47,12 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .news {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 15rem 0;
+  margin: 1rem 0;
   height: 100%;
 }
 
@@ -59,7 +65,7 @@ export default {
 }
 
 article {
-  background-color: #ffffff;
+  background-color: #222222; /* Fondo oscuro */
   border-radius: 15px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.217);
@@ -67,39 +73,42 @@ article {
   overflow: hidden;
   text-align: start;
   display: flex;
-  flex-direction: column; /* Mantiene el contenido ordenado */
+  flex-direction: column;
 }
 
 article h3 {
   font-size: 1.2rem;
-  color: #4b0082;
+  color: #00ffff; /* Cian brillante */
   margin-bottom: 0.5rem;
 }
 
 article p {
   font-size: 1rem;
-  color: #333333;
+  color: #f0f0f0; /* Gris claro */
   margin-bottom: 1rem;
 }
 
 article a {
-  color: #8a2be2;
+  color: #00ffff; /* Cian brillante */
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 article a:hover {
-  color: #4b0082;
+  color: #d9534f; /* Rojo brillante */
 }
 
 article:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
+
 h2 {
-  color: #4b0082;
-  margin: 0 2rem 2rem 2rem;
-  font-size: 3.5rem;
+  font-size: 3.4rem;
+  font-weight: 600;
+  margin: 0 0 4rem 4rem;
+  color: #00ffff; /* Cyan brillante */
+  text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff; /* Sombra de texto neón */
 }
 </style>

@@ -2,23 +2,23 @@
   <div class="video-home">
     <div class="home-video">
       <video
-        :src="require(`@/assets/gameover.mp4`)"
+        :src="require(`@/assets/fondo1.mp4`)"
         autoplay
         loop
         muted
         playsinline
       ></video>
-      <div
-        class="video-footer"
-        v-animate-vue="{ enterClass: 'fadeinup', enterActiveClass: 'animated' }"
-      >
-        <div class="platforms">
+      <div class="overlay"></div>
+      <div class="video-context">
+        <p class="video-subtitle">RetroRealms</p>
+        <h1 class="video-title">Líderes en la industria gaming</h1>
+        <router-link to="/ofertas"><button class="main-button">Catalogo</button></router-link>
+      </div>
+      <div class="video-footer">
+        <div class="platforms"  v-animate-vue="{ enterClass: 'zoomin' }">
           <span>PlayStation</span>
-          <span>•</span>
           <span>Xbox</span>
-          <span>•</span>
           <span>Nintendo</span>
-          <span>•</span>
           <span>PC</span>
         </div>
       </div>
@@ -35,6 +35,7 @@ export default {
 <style scoped>
 .video-home {
   width: 100%;
+  height: 100vh;
   position: relative;
   overflow: hidden;
 }
@@ -42,7 +43,7 @@ export default {
 .home-video {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 video {
@@ -51,77 +52,99 @@ video {
   object-fit: cover;
 }
 
-.video-footer {
+.overlay {
   position: absolute;
-  bottom: 0;
   width: 100%;
-  background-color: rgba(76, 0, 130, 0.13);
-  color: white;
-  text-align: center;
-  padding: 0.8rem;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
-.platforms {
+.video-context {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.video-subtitle {
+  font-size: 1.5rem;
+  font-family: 'Georgia', serif;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.video-title {
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', sans-serif;
+  margin-bottom: 2rem;
+}
+
+.main-button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+.main-button:hover {
+  background-color: #dddddd;
+}
+
+.video-footer {
+  position: absolute;
+  z-index: 2;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(20, 20, 20, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 2rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .platforms span {
-  color: white;
-  transition: color 0.3s ease;
   cursor: default;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
 }
 
 .platforms span:hover {
-  color: #00ffff;
-  transition: color 0.3s ease;
+  color: #dddddd;
   cursor: pointer;
 }
 
-
 @media (max-width: 768px) {
-  .home-video {
-    height: 100vh; 
+  .video-title {
+    font-size: 2.5rem;
+  }
+
+  .main-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 
   .video-footer {
-    font-size: 0.9rem; 
-    padding: 0.5rem; 
-  }
-
-  .platforms {
-    gap: 0.5rem; 
-  }
-
-  .platforms span {
-    font-size: 0.9rem; 
+    font-size: 0.85rem;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 }
-
-@media (max-width: 480px) {
-  .home-video {
-    height: 80vh; 
-  }
-
-  .video-footer {
-    font-size: 0.85rem; 
-    padding: 0.4rem; 
-  }
-
-  .platforms {
-    gap: 0.3rem; 
-    
-  }
-
-  .platforms span {
-    font-size: 0.85rem; 
-  }
-}
-
 </style>
