@@ -2,16 +2,17 @@
   <section class="ofertas">
     <div
       class="oferta-card"
-      v-for="(oferta, index) in ofertas"
+      v-for="(oferta, index) in ofertas.slice(2, 5)"
       :key="index"
+      v-animate-vue="{ enterClass: 'fadeinup' }"
     >
-      <img :src="require(`@/assets/${oferta.imagen}`)" :alt="oferta.titulo" />
+      <img :src="oferta.imagen" :alt="oferta.titulo" />
       <div class="info">
         <p class="categoria">{{ oferta.categoria }}</p>
         <h3>{{ oferta.titulo }}</h3>
-        <p class="descripcion">{{ oferta.descripcion }}</p>
-        <p class="precio-original">Precio original: {{ oferta.precioOriginal }}</p>
-        <p class="precio-oferta">Precio oferta: {{ oferta.precioOferta }}</p>
+
+        <p class="precio-original">Precio original: ${{ oferta.precioOriginal }}</p>
+        <p class="precio-oferta">Precio oferta: ${{ oferta.precioOferta }}</p>
         <div class="acciones">
           <button class="wishlist">Añadir a Favoritos</button>
           <button class="comprar">
@@ -24,37 +25,37 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "OfertasGrid",
   data() {
     return {
-      ofertas: [
-        {
-          imagen: "paquete.jpg",
-          categoria: "Aventura",
-          titulo: "Pack Aventura Épica",
-          descripcion: "Incluye 3 juegos de aventura AAA",
-          precioOriginal: "$179.99",
-          precioOferta: "$99.99",
-        },
-        {
-          imagen: "estrategia.jpg",
-          categoria: "Estrategia",
-          titulo: "Colección Estrategia",
-          descripcion: "5 juegos de estrategia clásicos",
-          precioOriginal: "$129.99",
-          precioOferta: "$79.99",
-        },
-        {
-          imagen: "indie.jpeg",
-          categoria: "Indie",
-          titulo: "Pack Bundle Indie Gems",
-          descripcion: "10 juegos indie premiados",
-          precioOriginal: "$99.99",
-          precioOferta: "$49.99",
-        },
-      ],
+      ofertas: [], 
     };
+  },
+  methods: {
+    async fetchOfertas() {
+      const url = "http://localhost:3000/juegos"; 
+      try {
+        const response = await axios.get(url);
+        console.log("Ofertas obtenidas:", response.data);
+        this.ofertas = response.data.map((juego) => ({
+          imagen: juego.imagen, 
+          categoria: "General", 
+          titulo: juego.nombre, 
+
+          precioOriginal: juego.precio.toFixed(2), 
+          precioOferta: (juego.precio - (juego.precio * juego.descuento)).toFixed(2), 
+        }));
+      } catch (error) {
+        console.error("Error al obtener las ofertas:", error);
+        alert("No se pudieron cargar las ofertas. Por favor, intenta más tarde.");
+      }
+    },
+  },
+  created() {
+    this.fetchOfertas(); // Llama a la API al montar el componente
   },
 };
 </script>
@@ -65,11 +66,11 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   padding: 2rem;
-  background-color: #1a1a1a; /* Fondo oscuro para videojuegos */
+  background-color: #1a1a1a;
 }
 
 .oferta-card {
-  background-color: #2c2f33; /* Fondo oscuro de las tarjetas */
+  background-color: #2c2f33;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -84,17 +85,19 @@ export default {
 
 .oferta-card img {
   width: 100%;
-  height: 200px;
+  height: 60%;
   object-fit: cover;
+
 }
 
 .info {
   padding: 1rem;
+  margin-top: 1rem;
 }
 
 .categoria {
   font-size: 0.9rem;
-  color: #7289da; /* Azul claro para categorías */
+  color: #7289da;
   margin-bottom: 0.5rem;
 }
 
@@ -119,7 +122,7 @@ h3 {
 
 .precio-oferta {
   font-size: 1.2rem;
-  color: #43b581; /* Verde vibrante para ofertas */
+  color: #43b581;
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -142,7 +145,7 @@ h3 {
 }
 
 .wishlist {
-  background-color: #7289da; /* Botón azul para añadir a favoritos */
+  background-color: #7289da;
   color: #ffffff;
 }
 
@@ -151,7 +154,7 @@ h3 {
 }
 
 .comprar {
-  background-color: #43b581; /* Botón verde para comprar */
+  background-color: #43b581;
   color: #ffffff;
   display: flex;
   align-items: center;

@@ -13,7 +13,8 @@
         Explora nuestras ofertas en videojuegos retro y actuales.<br />
         ¡Descuentos únicos por tiempo limitado!
       </p>
-      <button class="main-button">Explora</button>
+      <router-link to="/catalogo"><button class="main-button">Explora</button></router-link>
+      
     </div>
   </div>
 </template>

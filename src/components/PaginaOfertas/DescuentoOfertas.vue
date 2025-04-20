@@ -1,19 +1,19 @@
 <template>
-  <section class="oferta-especial" v-animate-vue="{ enterClass: 'fadeinleft' }">
-    <div class="decor decor1">
+  <section class="oferta-especial" >
+    <div class="decor decor1" v-animate-vue="{ enterClass: 'fadeinleft' }">
       <img src="https://i.blogs.es/acd8d1/unnamed-4-/450_1000.jpeg" alt="" />
     </div>
-    <div class="decor decor2">
+    <div class="decor decor2" v-animate-vue="{ enterClass: 'fadeinbottom' }">
       <img src="https://spinecard-com-s3.s3.dualstack.eu-west-1.amazonaws.com/original/3X/c/b/cb77d44c231a830aa82477698fab61ef80319af4.jpeg" alt="" />
     </div>
-    <div class="decor decor3">
+    <div class="decor decor3" v-animate-vue="{ enterClass: 'fadeinright' }">
       <img src="https://i.blogs.es/249f91/nintendo-switch-caratula-03/1366_2000.webp" alt="" />
     </div>
-    <div class="decor decor4">
+    <div class="decor decor4" v-animate-vue="{ enterClass: 'fadeinup' }">
       <img src="https://i0.wp.com/alexstombraider.blog/wp-content/uploads/2017/03/174538_front.jpg?w=326&h=375&ssl=1" alt="" />
     </div>
 
-    <div class="oferta-texto">
+    <div class="oferta-texto" >
       <small>Oferta exclusiva</small>
       <h2>Disfruta de un 25% de descuento</h2>
     </div>
@@ -46,7 +46,7 @@ export default {
   text-align: center;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%) ;
 
   font-family: "Montserrat", sans-serif;
   padding: 2rem;

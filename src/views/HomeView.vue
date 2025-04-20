@@ -10,6 +10,7 @@
     <GameHome></GameHome>
     
     <NewsHome></NewsHome>
+
     <FooterProyecto ></FooterProyecto>
   </div>
 </template>
@@ -24,6 +25,7 @@ import GameDestacado from "@/components/PaginaInicio/GameDestacado.vue";
 
 
 
+
 export default {
   name: "HomeView",
   components: {
@@ -33,6 +35,7 @@ export default {
     NewsHome,
     HomeVideo,
     GameDestacado,
+  
     
   },
 };
@@ -41,7 +44,7 @@ export default {
 .body {
   font-family: 'Roboto', sans-serif;
   background-color: #b7b4b4;
-  color: #333333;
+  color: #3a3a3a;
 
 }
 

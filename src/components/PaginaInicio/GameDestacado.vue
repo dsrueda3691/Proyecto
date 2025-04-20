@@ -65,8 +65,8 @@ h2:hover {
   width: 90%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #222; /* Fondo oscuro */
-  color: #f0f0f0; /* Texto en blanco para contraste */
+  background-color: #222; 
+  color: #f0f0f0; 
   position: relative;
   overflow: hidden;
   border-radius: 8px;

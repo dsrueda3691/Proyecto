@@ -14,10 +14,10 @@
       <template #item="slotProps">
         <div class="carousel-item">
           <div class="game-card">
-            <img :src="require(`@/assets/${slotProps.data.image}`)" :alt="slotProps.data.name" />
+            <img :src="slotProps.data.image" :alt="slotProps.data.name" />
             <h3>{{ slotProps.data.name }}</h3>
             <p>{{ slotProps.data.description }}</p>
-            <button>Ver detalles</button>
+            <button @click="viewGame(slotProps.data.name)">Ver detalles</button>
           </div>
         </div>
       </template>
@@ -26,32 +26,13 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'GameHome',
   data() {
     return {
-      games: [
-        {
-          name: 'Cyberpunk 2077',
-          image: 'V-V2-en.jpg',
-          description: 'Sumérgete en Night City, una megalópolis obsesionada con el poder, el glamour y la modificación corporal.',
-        },
-        {
-          name: 'Deathloop',
-          image: 'deathloop.jpeg',
-          description: 'Dos asesinos rivales atrapados en un misterioso bucle temporal en la isla de Blackreef.',
-        },
-        {
-          name: 'Halo Infinite',
-          image: 'halo infinite.jpg',
-          description: 'La legendaria saga Halo regresa con la campaña más amplia y llena de aventuras hasta la fecha.',
-        },
-        {
-          name: 'The Witcher 3',
-          image: 'halo infinite.jpg',
-          description: 'Un juego de rol de acción ambientado en un mundo abierto lleno de monstruos y magia.',
-        },
-      ],
+      games: [],
       responsiveOptions: [
         {
           breakpoint: '1024px',
@@ -66,6 +47,31 @@ export default {
       ],
     };
   },
+  methods: {
+    async fetchGames() {
+      const url = "http://localhost:3000/juegos";
+      try {
+        const response = await axios.get(url);
+        console.log("Datos de la API:", response.data);
+        this.games = response.data.slice(0, 10).map((game) => ({
+          name: game.nombre,
+          image: game.imagen,
+          description: game.descripcion.length > 100
+            ? game.descripcion.slice(0, 100) + "..."
+            : game.descripcion,
+        }));
+      } catch (error) {
+        console.error("Error al obtener los juegos:", error);
+        alert("Hubo un problema al cargar los juegos. Por favor, intenta de nuevo más tarde.");
+      }
+    },
+    viewGame(gameName) {
+      alert(`Has seleccionado el juego: ${gameName}`);
+    },
+  },
+  created() {
+    this.fetchGames();
+  },
 };
 </script>
 
@@ -75,13 +81,13 @@ export default {
   padding: 4rem 2rem;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: #111; /* Fondo oscuro */
+  background-color: #111;
   margin-bottom: 4rem;
 }
 
 h2 {
   font-size: 2.8rem;
-  color: #00ffff; /* Color neón cyan */
+  color: #00ffff;
   margin-bottom: 3rem;
   text-align: left;
 }
@@ -95,7 +101,7 @@ h2 {
 }
 
 .game-card {
-  background-color: #222; /* Fondo oscuro de tarjeta */
+  background-color: #222;
   border-radius: 20px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -104,15 +110,15 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 350px;
-  height: 450px;
+
+  height: 420px;
   padding: 1.5rem;
-  border: 2px solid #00ffff; /* Borde neón */
+  border: 2px solid #00ffff;
 }
 
-.game-card img {
+img {
   width: 100%;
-  height: 200px;
+  height: 50%;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1rem;
@@ -120,20 +126,20 @@ h2 {
 
 .game-card h3 {
   font-size: 1.3rem;
-  color: #00ffff; /* Color de texto neón cyan */
+  color: #00ffff;
   margin-bottom: 0.5rem;
 }
 
 .game-card p {
   font-size: 1rem;
-  color: #ccc; /* Gris claro para texto */
+  color: #ccc;
   flex-grow: 1;
   margin-bottom: 1rem;
 }
 
 .game-card button {
-  background-color: #333; /* Fondo oscuro */
-  color: #00ffff; /* Texto neón */
+  background-color: #333;
+  color: #00ffff;
   border: none;
   padding: 0.8rem;
   border-radius: 8px;
@@ -145,14 +151,14 @@ h2 {
 }
 
 .game-card button:hover {
-  background-color: #00ffff; /* Fondo neón al pasar */
-  color: #311545; /* Texto oscuro al pasar */
+  background-color: #00ffff;
+  color: #311545;
   transform: scale(1.05);
 }
 
 .game-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.35); /* Sombra más suave */
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -169,7 +175,7 @@ h2 {
   }
 
   .game-card img {
-    height: 180px;
+    height: 200px;
   }
 
   .game-card h3 {
