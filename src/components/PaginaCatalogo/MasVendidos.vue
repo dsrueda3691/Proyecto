@@ -22,7 +22,9 @@
             <img class="card-image" :src="item.imagen" :alt="item.nombre" />
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
-              <button class="buy-btn">Comprar</button>
+              <router-link :to="{ name: 'detalles', params: { id: item.id } }">
+                <button class="buy-btn" disabled>Comprar</button>
+              </router-link>
             </div>
           </div>
         </section>
@@ -36,7 +38,9 @@
             <img class="card-image" :src="item.imagen" :alt="item.nombre" />
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
-              <button class="buy-btn" disabled>Comprar</button>
+              <router-link :to="{ name: 'detalles', params: { id: item.id } }">
+                <button class="buy-btn" disabled>Comprar</button>
+              </router-link>
             </div>
             <div class="not-available-overlay">
               <span class="not-available-text">No disponible</span>
@@ -66,6 +70,7 @@ export default {
           descripcion: item.descripcion?.slice(0, 100) || "Sin descripción",
           imagen: item.imagen || "https://via.placeholder.com/150",
           precio: item.precio?.toFixed(2) || "0.00",
+          id: item.id,
           disponibilidad: item.disponibilidad,
         }));
       } catch (error) {
@@ -108,9 +113,9 @@ export default {
 .ver-mas-btn {
   background: linear-gradient(90deg, #3498db, #3cb0fd);
   padding: 0.4rem 1rem;
-  color: #ffffff; 
+  color: #ffffff;
   font-size: 0.8rem;
-  border-radius: 0.5rem;  
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
   border: none;
@@ -118,7 +123,7 @@ export default {
 }
 
 .ver-mas-btn:hover {
-    background: linear-gradient(90deg, #3cb0fd, #1fa2ff);
+  background: linear-gradient(90deg, #3cb0fd, #1fa2ff);
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(52, 152, 219, 0.6);
 }

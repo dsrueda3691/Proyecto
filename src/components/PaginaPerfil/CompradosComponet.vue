@@ -33,6 +33,8 @@ import { ref, onMounted, computed } from "vue";
 import axios from "axios";
 
 export default {
+  name:"CompradosComponent",
+  
 
   setup() {
     const productos = ref([]);

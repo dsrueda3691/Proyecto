@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <HeaderProyecto></HeaderProyecto>
-    <OfertaMain></OfertaMain>
+    <CatalogoMain></CatalogoMain>
     <CatalogoComponent></CatalogoComponent>
     <MultiPlataforma></MultiPlataforma>
     <Novedades></Novedades>
@@ -15,7 +15,7 @@ import CatalogoComponent from "@/components/PaginaCatalogo/MasVendidos.vue";
 import FooterProyecto from "@/components/Componentes+/FooterProyecto.vue";
 import HeaderProyecto from "@/components/Componentes+/HeaderProyecto.vue";
 
-import OfertaMain from "@/components/PaginaOfertas/OfertaMain.vue";
+import CatalogoMain from "@/components/PaginaCatalogo/CatalogoMain.vue";
 import MultiPlataforma from "@/components/PaginaCatalogo/MultiPlataforma.vue";
 import Novedades from "@/components/PaginaCatalogo/Novedades.vue";
 import Agotados from "@/components/PaginaCatalogo/Agotados.vue";
@@ -25,7 +25,7 @@ export default {
     CatalogoComponent,
     FooterProyecto,
     HeaderProyecto,
-    OfertaMain,
+    CatalogoMain,
     MultiPlataforma,
     Novedades,
     Agotados,

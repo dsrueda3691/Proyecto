@@ -22,7 +22,9 @@
             <img class="card-image" :src="item.imagen" :alt="item.nombre" />
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
-              <button class="buy-btn">Comprar</button>
+              <router-link :to="{ name: 'detalles', params: { id: item.id } }">
+                <button class="buy-btn" disabled>Comprar</button>
+              </router-link>
             </div>
           </div>
         </section>
@@ -36,7 +38,9 @@
             <img class="card-image" :src="item.imagen" :alt="item.nombre" />
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
-              <button class="buy-btn" disabled>Comprar</button>
+              <router-link :to="{ name: 'detalles', params: { id: item.id } }">
+                <button class="buy-btn" disabled>Comprar</button>
+              </router-link>
             </div>
             <div class="not-available-overlay">
               <span class="not-available-text">No disponible</span>
@@ -53,7 +57,6 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 
 export default {
-
   setup() {
     const productos = ref([]);
 
@@ -66,6 +69,7 @@ export default {
           descripcion: item.descripcion?.slice(0, 100) || "Sin descripción",
           imagen: item.imagen || "https://via.placeholder.com/150",
           precio: item.precio?.toFixed(2) || "0.00",
+          id: item.id,
           disponibilidad: item.disponibilidad,
         }));
       } catch (error) {
@@ -105,7 +109,7 @@ export default {
 }
 
 .ver-mas-btn {
-    background: linear-gradient(90deg, #3498db, #3cb0fd);
+  background: linear-gradient(90deg, #3498db, #3cb0fd);
   padding: 0.4rem 1rem;
   color: #ffffff;
   font-size: 0.8rem;
@@ -117,7 +121,7 @@ export default {
 }
 
 .ver-mas-btn:hover {
-    background: linear-gradient(90deg, #3cb0fd, #1fa2ff);
+  background: linear-gradient(90deg, #3cb0fd, #1fa2ff);
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(52, 152, 219, 0.6);
 }
@@ -136,7 +140,6 @@ export default {
   justify-content: center;
 }
 
-
 .card {
   position: relative;
   width: 100%;
@@ -148,12 +151,10 @@ export default {
   background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
 }
 
-
 .available-card:hover {
   transform: scale(1.05) translateY(-10px);
   box-shadow: 0px 8px 24px rgba(0, 255, 255, 0.3);
 }
-
 
 .not-available-card {
   filter: grayscale(100%);

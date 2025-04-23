@@ -11,13 +11,17 @@
         <p class="categoria">{{ oferta.categoria }}</p>
         <h3>{{ oferta.titulo }}</h3>
 
-        <p class="precio-original">Precio original: ${{ oferta.precioOriginal }}</p>
+        <p class="precio-original">
+          Precio original: ${{ oferta.precioOriginal }}
+        </p>
         <p class="precio-oferta">Precio oferta: ${{ oferta.precioOferta }}</p>
         <div class="acciones">
           <button class="wishlist">Añadir a Favoritos</button>
-          <button class="comprar">
-            <i class="fas fa-shopping-cart"></i> Comprar Ahora
-          </button>
+          <router-link :to="{ name: 'detalles', params: { id: oferta.id } }">
+            <button class="comprar">
+              <i class="fas fa-shopping-cart"></i> Comprar Ahora
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -31,26 +35,32 @@ export default {
   name: "OfertasGrid",
   data() {
     return {
-      ofertas: [], 
+      ofertas: [],
     };
   },
   methods: {
     async fetchOfertas() {
-      const url = "http://localhost:3000/juegos"; 
+      const url = "http://localhost:3000/juegos";
       try {
         const response = await axios.get(url);
         console.log("Ofertas obtenidas:", response.data);
         this.ofertas = response.data.map((juego) => ({
-          imagen: juego.imagen, 
-          categoria: "General", 
-          titulo: juego.nombre, 
+          imagen: juego.imagen,
+          categoria: "General",
+          titulo: juego.nombre,
+          sinopsis: juego.sinopsis,
+          id: juego.id,
 
-          precioOriginal: juego.precio.toFixed(2), 
-          precioOferta: (juego.precio - (juego.precio * juego.descuento)).toFixed(2), 
+          precioOriginal: juego.precio.toFixed(2),
+          precioOferta: (juego.precio - juego.precio * juego.descuento).toFixed(
+            2
+          ),
         }));
       } catch (error) {
         console.error("Error al obtener las ofertas:", error);
-        alert("No se pudieron cargar las ofertas. Por favor, intenta más tarde.");
+        alert(
+          "No se pudieron cargar las ofertas. Por favor, intenta más tarde."
+        );
       }
     },
   },
@@ -87,7 +97,6 @@ export default {
   width: 100%;
   height: 60%;
   object-fit: cover;
-
 }
 
 .info {

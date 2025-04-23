@@ -6,7 +6,7 @@
     
     <PerfilSection :usuario="usuario" @actualizarUsuario="actualizarUsuario" />
     <div v-if="usuario">
-      <Comprados />
+      <CompradosComponet />
     </div>
     <div v-if="usuario">
       <FooterProyecto />
@@ -18,7 +18,7 @@
 <script>
 
 import PerfilSection from "@/components/PaginaPerfil/PerfilSection.vue";
-import Comprados from "@/components/PaginaPerfil/Comprados.vue";
+import CompradosComponet from "@/components/PaginaPerfil/CompradosComponet.vue";
 import FooterProyecto from "@/components/Componentes+/FooterProyecto.vue";
 import HeaderProyecto from "@/components/Componentes+/HeaderProyecto.vue";
 
@@ -28,7 +28,7 @@ export default {
   components: {
     HeaderProyecto,
     PerfilSection,
-    Comprados,
+    CompradosComponet,
     FooterProyecto,
   },
   data() {

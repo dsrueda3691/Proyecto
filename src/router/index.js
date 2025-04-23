@@ -3,12 +3,18 @@ import HomeView from '../views/HomeView.vue'
 import OfertasView from '@/views/OfertasView.vue'
 import PerfilView from '@/views/PerfilView.vue'
 import CatalogoView from '@/views/CatalogoView.vue'
+import DetallesView from '@/views/DetallesView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/detalles/:id',
+    name: 'detalles',
+    component: DetallesView
   },
   {
     path: '/ofertas',
