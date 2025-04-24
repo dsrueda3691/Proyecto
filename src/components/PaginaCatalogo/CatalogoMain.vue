@@ -2,20 +2,18 @@
   <div class="oferta-main">
     <img
       class="fondo"
-      :src="require('@/assets/fondoOfertas.png')"
+      :src="require('@/assets/fondoCatalogo.jpg')"
       alt="Fondo ofertas"
     />
     <div class="overlay"></div>
     <div class="contenido">
       <p class="subtitulo">RetroRealms</p>
-      <h1 class="titulo">catalogo</h1>
+      <h1 class="titulo">Catalogo 2025</h1>
       <p class="descripcion">
         Explora nuestro catalogo en videojuegos retro y actuales.<br />
         ¡Descuentos únicos por tiempo limitado!
       </p>
-      <router-link to="/catalogo"
-        ><button class="main-button">Explora</button></router-link
-      >
+      
     </div>
   </div>
 </template>

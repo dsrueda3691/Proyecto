@@ -1,6 +1,6 @@
 <template>
   <section class="perfil">
-    <!-- Perfil de usuario -->
+
     <div v-if="usuario" class="perfil-info">
       <img :src="usuario.avatar" alt="Avatar" class="avatar" />
       <h2 class="nombre">{{ usuario.nombre }}</h2>
@@ -20,7 +20,7 @@
       <button @click="cerrarSesion" class="cerrar-sesion">Cerrar Sesión</button>
     </div>
 
-    <!-- Formulario de inicio de sesión -->
+
     <div v-else class="login-form">
       <h2>Iniciar Sesión</h2>
       <form @submit.prevent="iniciarSesion">

@@ -17,7 +17,9 @@
             <img :src="slotProps.data.image" :alt="slotProps.data.name" />
             <h3>{{ slotProps.data.name }}</h3>
             <p>{{ slotProps.data.description }}</p>
-            <button @click="viewGame(slotProps.data.name)">Ver detalles</button>
+            <router-link :to="{ name: 'detalles', params: { id: slotProps.data.id } }">
+              <button>Ver detalles</button>
+            </router-link>
           </div>
         </div>
       </template>
@@ -29,18 +31,18 @@
 import axios from "axios";
 
 export default {
-  name: 'GameHome',
+  name: "GameHome",
   data() {
     return {
       games: [],
       responsiveOptions: [
         {
-          breakpoint: '1024px',
+          breakpoint: "1024px",
           numVisible: 2,
           numScroll: 1,
         },
         {
-          breakpoint: '768px',
+          breakpoint: "768px",
           numVisible: 1,
           numScroll: 1,
         },
@@ -56,17 +58,18 @@ export default {
         this.games = response.data.slice(0, 10).map((game) => ({
           name: game.nombre,
           image: game.imagen,
-          description: game.descripcion.length > 100
-            ? game.descripcion.slice(0, 100) + "..."
-            : game.descripcion,
+          id:game.id,
+          description:
+            game.descripcion.length > 100
+              ? game.descripcion.slice(0, 100) + "..."
+              : game.descripcion,
         }));
       } catch (error) {
         console.error("Error al obtener los juegos:", error);
-        alert("Hubo un problema al cargar los juegos. Por favor, intenta de nuevo más tarde.");
+        alert(
+          "Hubo un problema al cargar los juegos. Por favor, intenta de nuevo más tarde."
+        );
       }
-    },
-    viewGame(gameName) {
-      alert(`Has seleccionado el juego: ${gameName}`);
     },
   },
   created() {

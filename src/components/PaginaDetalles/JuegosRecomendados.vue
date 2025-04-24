@@ -1,25 +1,45 @@
 <template>
   <div class="catalogo-container">
     <div class="header">
-      <h1 class="page-title">Agotados</h1>
-      <button class="ver-mas-btn" @click="verMas">Ver Más</button>
+      <h1 class="page-title">Juegos Recomendados</h1>
     </div>
-    <p v-if="productosAgotados.length === 0" class="no-productos">
+    <p v-if="productos.length === 0" class="no-productos">
       No hay productos disponibles.
     </p>
     <div class="catalogo-grid">
       <div
         class="catalogo-item"
-        v-for="(item, index) in productosAgotados"
+        v-for="(item, index) in productos.slice(10, 14)"
         :key="index"
       >
-        <section class="card not-available-card">
+        <section
+          class="card available-card"
+          v-if="item.disponibilidad === 'Disponible'"
+          v-animate-vue="{ enterClass: 'fadeinleft' }"
+        >
           <div class="product-image">
             <img class="card-image" :src="item.imagen" :alt="item.nombre" />
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
+              <router-link :to="{ name: 'detalles', params: { id: item.id } }">
+                <button class="ver-mas-btn">detalles</button>
+              </router-link>
+            </div>
+          </div>
+        </section>
 
-              <button class="buy-btn" disabled>Comprar</button>
+        <section
+          class="card not-available-card"
+          v-else
+          v-animate-vue="{ enterClass: 'fadeinleft' }"
+        >
+          <div class="product-image">
+            <img class="card-image" :src="item.imagen" :alt="item.nombre" />
+            <div class="overlay">
+              <h2 class="product-name">{{ item.nombre }}</h2>
+              <router-link :to="{ name: 'detalles', params: { id: item.id } }">
+                <button class="ver-mas-btn" disabled>detalles</button>
+              </router-link>
             </div>
             <div class="not-available-overlay">
               <span class="not-available-text">No disponible</span>
@@ -32,11 +52,11 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 
 export default {
-  name: "MultiPlataforma",
+  name: "CatalogoComponent",
   setup() {
     const productos = ref([]);
 
@@ -57,12 +77,8 @@ export default {
       }
     });
 
-    const productosAgotados = computed(() =>
-      productos.value.filter((item) => item.disponibilidad !== "Disponible")
-    );
-
     return {
-      productosAgotados,
+      productos,
     };
   },
 };
@@ -79,20 +95,20 @@ export default {
   overflow: hidden;
 }
 
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: start;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
 }
-
-.page-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
 .ver-mas-btn {
   background: linear-gradient(90deg, #3498db, #3cb0fd);
   padding: 0.4rem 1rem;
@@ -120,10 +136,9 @@ export default {
 
 .catalogo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  justify-content: center; /* Centra el grid */
-  align-items: start; /* Alinea verticalmente */
+  justify-content: center;
 }
 
 .card {
@@ -211,7 +226,7 @@ export default {
   cursor: not-allowed;
 }
 
-/* Estilos específicos para productos no disponibles */
+
 .not-available-overlay {
   position: absolute;
   top: 0;

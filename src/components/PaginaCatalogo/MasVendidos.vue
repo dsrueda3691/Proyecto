@@ -23,7 +23,7 @@
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
               <router-link :to="{ name: 'detalles', params: { id: item.id } }">
-                <button class="buy-btn" disabled>Comprar</button>
+                <button class="ver-mas-btn">detalles</button>
               </router-link>
             </div>
           </div>
@@ -39,7 +39,7 @@
             <div class="overlay">
               <h2 class="product-name">{{ item.nombre }}</h2>
               <router-link :to="{ name: 'detalles', params: { id: item.id } }">
-                <button class="buy-btn" disabled>Comprar</button>
+                <button class="ver-mas-btn" disabled>detalles</button>
               </router-link>
             </div>
             <div class="not-available-overlay">

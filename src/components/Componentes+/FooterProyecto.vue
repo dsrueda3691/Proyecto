@@ -48,7 +48,7 @@
         <h4>Contacto</h4>
         <ul>
           <li>Email: info@RetroRealms.com</li>
-          <li>Teléfono: (123) 456-7890</li>
+          <li>Teléfono: 300 1234567</li>
        
         </ul>
       </div>
@@ -91,7 +91,7 @@
 
     <div class="footer-bottom" v-animate-vue="{ enterClass: 'fadeinbottom' }">
       <p class="copyright">
-        &copy; 2024 Retro Realms. Todos los derechos reservados.
+        &copy; 2025 Retro Realms. Todos los derechos reservados.
       </p>
     </div>
   </footer>

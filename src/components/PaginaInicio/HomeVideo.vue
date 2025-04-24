@@ -12,7 +12,7 @@
       <div class="video-context">
         <p class="video-subtitle">RetroRealms</p>
         <h1 class="video-title">Líderes en la industria gaming</h1>
-        <router-link to="/ofertas"><button class="main-button">Catalogo</button></router-link>
+        <router-link to="/catalogo"><button class="main-button">Catalogo</button></router-link>
       </div>
       <div class="video-footer">
         <div class="platforms"  v-animate-vue="{ enterClass: 'zoomin' }">
