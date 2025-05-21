@@ -16,6 +16,7 @@
         <li><router-link to="/">Inicio</router-link></li>
         <li><router-link to="/ofertas">Ofertas</router-link></li>
         <li><router-link to="/catalogo">Catálogo</router-link></li>
+        <li><router-link to="/admin">Admin</router-link></li>
         <li>
           <router-link to="/perfil">
             <ButtonVue

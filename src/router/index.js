@@ -4,6 +4,7 @@ import OfertasView from '@/views/OfertasView.vue'
 import PerfilView from '@/views/PerfilView.vue'
 import CatalogoView from '@/views/CatalogoView.vue'
 import DetallesView from '@/views/DetallesView.vue'
+import AdminView from '@/views/AdminView.vue'
 
 const routes = [
   {
@@ -11,6 +12,12 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView
+  },
+  
   {
     path: '/detalles/:id',
     name: 'detalles',
